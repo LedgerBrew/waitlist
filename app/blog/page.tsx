@@ -41,8 +41,8 @@ export default async function  BlogPage() {
 
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {blogData.map((post, idx) => (
-                        <div className="mt-8">
-                            <div key={idx} className="block rounded-xl border border-gray-200 hover:shadow-xl transition pb-4">
+                        <div key={idx} className="mt-8">
+                            <div className="block rounded-xl border border-gray-200 hover:shadow-xl transition pb-4">
                                 <Image src={urlFor(post.titleImage).url()} alt="accompanying image" className="rounded-t-xl" height={500} width={500}/>
                                 <div className="px-4">
                                     <h2 className="mt-4 text-xl font-bold text-gray-700 line-clamp-2">{post.title}</h2>

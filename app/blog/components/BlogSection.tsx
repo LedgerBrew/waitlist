@@ -35,8 +35,8 @@ export default async function BlogSection() {
 
                 <div >
                     {blogData.map((post, idx) => (
-                        <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                            <div key={idx} className="block rounded-xl border border-gray-300 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 pb-4">
+                        <div key={idx} className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+                            <div className="block rounded-xl border border-gray-300 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 pb-4">
                                 <Image src={urlFor(post.titleImage).url()} alt="accompanying image" className="rounded-t-xl" height={500} width={500}/>
                                 <div className="px-4">
                                     <h2 className="mt-4 text-xl font-bold text-gray-700 line-clamp-2">{post.title}</h2>
