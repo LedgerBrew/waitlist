@@ -58,7 +58,7 @@ const Accordion = () => {
             </span>
           </summary>
           <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
-            Absolutely! Everyone joining our waitlist will get early access to test out LedgerBrew's core features through interactive demos and a free 30-day trial when we launch.
+            Absolutely! Everyone joining our waitlist will get early access to test out LedgerBrew&apos;s core features through interactive demos when we launch.
           </p>
         </details>
       </div>
