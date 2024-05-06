@@ -36,20 +36,20 @@ export default async function BlogSection() {
                 <div >
                     {blogData.map((post, idx) => (
                         <div key={idx} className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                            <div className="block rounded-xl border border-gray-300 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 pb-4">
+                            <Link href={`/blog/${post.currentSlug}`} className="block rounded-xl border border-gray-300 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 pb-4">
                                 <Image src={urlFor(post.titleImage).url()} alt="accompanying image" className="rounded-t-xl" height={500} width={500}/>
                                 <div className="px-4">
                                     <h2 className="mt-4 text-xl font-bold text-gray-700 line-clamp-2">{post.title}</h2>
 
                                     <p className="mt-1 text-sm text-gray-500">{post.smallDescription}</p>
-                                    <div className="mt-12 text-center">
+                                    {/* <div className="mt-12 text-center">
                                         <Link href={`/blog/${post.currentSlug}`} className="inline-block rounded bg-pink-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-pink-700 focus:outline-none focus:ring focus:ring-yellow-400">
                                             Read More
                                             </Link>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 
-                            </div>
+                            </Link>
                             <div key={idx} className="block rounded-xl border border-gray-300 shadow-xl transition hover:border-pink-500/10 hover:shadow-pink-500/10 pb-4">
                                 <Image src={urlFor(post.titleImage).url()} alt="accompanying image" className="rounded-t-xl" height={500} width={500}/>
                                 <div className="px-4">

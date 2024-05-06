@@ -42,20 +42,15 @@ export default async function  BlogPage() {
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {blogData.map((post, idx) => (
                         <div key={idx} className="mt-8">
-                            <div className="block rounded-xl border border-gray-200 hover:shadow-xl transition pb-4">
+                            <Link href={`/blog/${post.currentSlug}`} className="block rounded-xl border border-gray-200 hover:shadow-xl transition pb-4">
                                 <Image src={urlFor(post.titleImage).url()} alt="accompanying image" className="rounded-t-xl" height={500} width={500}/>
                                 <div className="px-4">
                                     <h2 className="mt-4 text-xl font-bold text-gray-700 line-clamp-2">{post.title}</h2>
 
                                     <p className="mt-1 text-sm text-[#8A8A8A]">{post.smallDescription}</p>
-                                    <div className="mt-12 text-center">
-                                        <Link href={`/blog/${post.currentSlug}`} className="inline-block bg-transparent px-12 py-3 rounded-lg border-2 border-[#744629] text-sm font-medium text-[#744629] transition hover:bg-[#744629] hover:text-white focus:outline-none focus:ring focus:ring-yellow-400">
-                                            Read More
-                                            </Link>
-                                    </div>
                                 </div>
                                 
-                            </div>
+                            </Link>
                            
                         </div>
                     

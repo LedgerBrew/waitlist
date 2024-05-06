@@ -9,6 +9,14 @@ const Navbar = () => {
                     <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <Image className="mr-2" src="/Logo-1a.png" width={48} height={48} alt="logo" />
                     </a>
+                    <div className="flex flex-row items-center justify-center md:hidden">
+                        <ol>
+                            <Link href="/" className="block py-2 px-3 text-gray-900" aria-current="page">Home</Link>
+                        </ol>
+                        <ol>
+                            <Link href="/blog" className="block py-2 px-3 text-[#744629]">Blog</Link>
+                        </ol>
+                    </div>
                     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
                             <li>

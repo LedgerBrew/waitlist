@@ -37,7 +37,7 @@ export default function Home() {
                 formRef.current!!.reset();
                 console.log(json.sheet1);
             });
-        
+
     };
 
     return (
@@ -48,6 +48,14 @@ export default function Home() {
                     <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <Image className="mr-2" src="/Logo-1a.png" width={48} height={48} alt="logo" />
                     </a>
+                    <div className="flex flex-row items-center justify-center md:hidden">
+                        <ol>
+                            <a href="#" className="block py-2 px-3 text-[#744629]" aria-current="page">Home</a>
+                        </ol>
+                        <ol>
+                            <Link href="/blog" className="block py-2 px-3 text-gray-900">Blog</Link>
+                        </ol>
+                    </div>
                     <div className="hidden w-full md:block md:w-auto" id="navbar-default">
                         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
                             <li>
@@ -66,9 +74,9 @@ export default function Home() {
             {/* Hero Start */}
 
             <section className="pt-24 bg-white">
-                <div className="px-12 mx-auto max-w-7xl">
-                    <div className="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
-                        <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
+                <div className="px-6 mx-auto max-w-7xl">
+                    <div className="w-full mx-auto text-center md:w-11/12 xl:w-9/12 md:text-center">
+                        <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight text-center">
                             <span>No more</span><span className="block w-full py-2 text-[#3D5835] bg-clip-text leading-12 bg-[#3D5835] lg:inline"> messy </span><span>books!</span>
                         </h1>
                         <p className="px-0 mb-8 text-lg text-[#8A8A8A] md:text-xl lg:px-24">
@@ -121,7 +129,7 @@ export default function Home() {
             <section className="bg-white pt-24">
                 <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 pt-24">
                     <div className="max-w-screen-lg mb-8 lg:mb-16 text-center">
-                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">What You Can Achieve Effortlessly with LedgerBrew</h2>
+                        <h2 className="mb-4 text-3xl text-gray-950 font-semibold">What You Can Achieve Effortlessly with LedgerBrew</h2>
                         {/* <p className="text-gray-800 sm:text-xl">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p> */}
                     </div>
                     <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
@@ -220,7 +228,7 @@ export default function Home() {
                 <div className="py-8 px-4 mx-auto max-w-6xl sm:py-16 lg:px-6">
                     <div className="relative isolate overflow-hidden bg-[#FFF9F5] px-6 pt-16 drop-shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-24 pb-24">
                         <div className="mx-auto max-w-screen-sm text-center">
-                            <p className="mb-6 font-light text-[#8A8A8A] md:text-lg">Be first in line when Nexus opens its books by joining our waitlist today. You&apos;ll be among the first to experience uncompromised bookkeeping and invoicing tools designed for small business success.</p>
+                            <p className="mb-6 font-light text-[#8A8A8A] md:text-lg">Be first in line when LedgerBrew opens its books by joining our waitlist today. You&apos;ll be among the first to experience uncompromised bookkeeping and invoicing tools designed for small business success.</p>
                             <form className="w-full max-w-md mx-auto" ref={formRef} onSubmit={handleSubmit}>
                                 <label htmlFor="default-email" className="mb-2 text-sm font-medium text-gray-900 sr-only">Join wailist</label>
                                 <div className="relative">
@@ -230,7 +238,7 @@ export default function Home() {
                                             <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
                                         </svg>
                                     </div>
-                                    <input type="email" id="default-email" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-white" placeholder="Enter your email here..." required ref={emailRef}/>
+                                    <input type="email" id="default-email" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-white" placeholder="Enter your email here..." required ref={emailRef} />
                                     <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-[#744629] focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-4 py-2">Get Early Access</button>
                                 </div>
                             </form>

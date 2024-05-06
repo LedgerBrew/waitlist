@@ -42,7 +42,7 @@ const CTA = () => {
                 <div className="py-8 px-4 mx-auto max-w-6xl sm:py-16 lg:px-6">
                     <div className="relative isolate overflow-hidden bg-[#FFF9F5] px-6 pt-16 drop-shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-24 pb-24">
                         <div className="mx-auto max-w-screen-sm text-center">
-                            <p className="mb-6 font-light text-[#8A8A8A] md:text-lg">Be first in line when Nexus opens its books by joining our waitlist today. You&apos;ll be among the first to experience uncompromised bookkeeping and invoicing tools designed for small business success.</p>
+                            <p className="mb-6 font-light text-[#8A8A8A] md:text-lg">Be first in line when LedgerBrew opens its books by joining our waitlist today. You&apos;ll be among the first to experience uncompromised bookkeeping and invoicing tools designed for small business success.</p>
                             <form className="w-full max-w-md mx-auto" ref={formRef} onSubmit={handleSubmit}>
                                 <label htmlFor="default-email" className="mb-2 text-sm font-medium text-gray-900 sr-only">Join wailist</label>
                                 <div className="relative">
