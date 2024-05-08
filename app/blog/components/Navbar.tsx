@@ -6,9 +6,9 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                    <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+                    <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <Image className="mr-2" src="/Logo-1a.png" width={48} height={48} alt="logo" />
-                    </a>
+                    </Link>
                     <div className="flex flex-row items-center justify-center md:hidden">
                         <ol>
                             <Link href="/" className="block py-2 px-3 text-gray-900" aria-current="page">Home</Link>
