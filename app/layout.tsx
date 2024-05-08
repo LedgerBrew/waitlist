@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "LedgerBrew",
   description: "LedgerBrew is a simple accounting software built specifically for small businesses, freelancers and entrepreneurs to brew a perfect set of books",
-  keywords: "client bookkeeping solutions, accounting software for small business, bookkeeping services, bookkeeping software for small business, bookkeeper near me, accounting programs for small business, accounting packages for small business, accounting platforms, book keepers, small company accounting software, double entry accounting, accounting and bookkeeping software, book keeping near me, accounting software software, double ledger accounting, small accounting software for small business",
+  keywords: "client bookkeeping solutions, accounting software for small business, bookkeeping services, bookkeeping software for small business, bookkeeper near me, accounting programs for small business, accounting packages for small business, accounting platforms, book keepers, small company accounting software, double entry accounting, accounting and bookkeeping software, book keeping near me, accounting software software, double ledger accounting, small accounting software for small business quickbooks Quickbooks Xero xero",
 };
 
 
