@@ -1,47 +1,54 @@
 'use client'
+import React, {useState} from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, FormEvent } from 'react';
 import Accordion from "./components/accordion";
+import { useFormik } from 'formik';
+import { createUser } from "@/actions/users.index";
+import Toast from "./components/toast";
 
-interface Sheet1 {
+
+interface UserValues {
     email: string;
 }
 
-interface Response {
-    sheet1: Sheet1;
-}
-
 export default function Home() {
-    const formRef = useRef<HTMLFormElement>(null);
-    const emailRef = useRef<HTMLInputElement>(null);
+    const [showToast, setShowToast] = useState<{ message: string; type: 'success' | 'error' | 'default' } | null>(null);
 
-    const handleSubmit = (event: FormEvent) => {
-        event.preventDefault();
-
-        const email = emailRef.current!!.value;
-        let url = 'https://api.sheety.co/f12354477dc9eef0a4f56bbc8865d4dc/ledgerBrewWaitlist/sheet1';
-        let body = {
-            sheet1: {
-                email
-            }
-        }
-        fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: { "Content-Type": "application/json" }
-        })
-            .then((response) => response.json())
-            .then(json => {
-                alert("Form submitted with email");
-                formRef.current!!.reset();
-                console.log(json.sheet1);
+    const handleSubmit = async (values: UserValues) => {
+        try {
+            const response = await createUser({
+                email: values.email
             });
-
+            if (response) {
+                setShowToast({ message: 'You have signed up for the waitlist', type: 'success' });
+                formik.resetForm();
+                // alert('You have signed up for the waitlist');
+            }
+        } catch (error) {
+            // setShowToast({ message: result.message || 'An error occurred', type: 'error' });
+            
+            console.error('Error signing up for waitlist:', error);
+        }
     };
+    const formik = useFormik({
+        initialValues: {
+            email: ''
+        },
+        onSubmit: (values: UserValues) => {
+            handleSubmit(values);
+        },
+    });
 
     return (
         <>
+        {showToast && (
+      <Toast
+        message={showToast.message}
+        type={showToast.type}
+        duration={3000} // Example duration of 5 seconds
+      />
+    )}
             {/* Navbar Start */}
             <nav className="bg-white border-gray-200">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -83,8 +90,8 @@ export default function Home() {
                             Simple accounting software you&apos;ll actually use for a beautiful, straightforward way to balance the books.
                         </p>
                         <div className="mb-4 space-x-0 md:space-x-2 md:mb-8">
-                            <form className="w-full max-w-md mx-auto" method="POST" action="https://api.sheety.co/f12354477dc9eef0a4f56bbc8865d4dc/ledgerBrewWaitlist/sheet1" ref={formRef} onSubmit={handleSubmit}>
-                                <label htmlFor="default-email" className="mb-2 text-sm font-medium text-gray-900 sr-only">Be the First to Try Nexus Free</label>
+                        <form onSubmit={formik.handleSubmit} className="w-full max-w-md mx-auto">
+                                            <label htmlFor="default-email" className="mb-2 text-sm font-medium text-gray-900 sr-only">Be the First to Try Nexus Free</label>
                                 <div className="relative">
                                     <div className="absolute inset-y-0 rtl:inset-x-0 start-0 flex items-center ps-3.5 pointer-events-none">
                                         <svg className="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
@@ -92,11 +99,13 @@ export default function Home() {
                                             <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
                                         </svg>
                                     </div>
-                                    <input type="email" name="Email" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-white" placeholder="Enter your email here..." required ref={emailRef} />
+                                    <input type="email" name="email" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-white" placeholder="Enter your email here..." required value={formik.values.email} onChange={formik.handleChange} />
                                     <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-[#744629] focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-4 py-2">Get Early Access</button>
 
                                 </div>
-                            </form>
+                                                {/* <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Enter email" required value={formik.values.email} onChange={formik.handleChange} /> */}
+                                            
+                                    </form>
                         </div>
                     </div>
                     <div className="w-full mx-auto mt-20 text-center md:w-10/12">
@@ -229,8 +238,8 @@ export default function Home() {
                     <div className="relative isolate overflow-hidden bg-[#FFF9F5] px-6 pt-16 drop-shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-24 pb-24">
                         <div className="mx-auto max-w-screen-sm text-center">
                             <p className="mb-6 font-light text-[#8A8A8A] md:text-lg">Be first in line when LedgerBrew opens its books by joining our waitlist today. You&apos;ll be among the first to experience uncompromised bookkeeping and invoicing tools designed for small business success.</p>
-                            <form className="w-full max-w-md mx-auto" ref={formRef} onSubmit={handleSubmit}>
-                                <label htmlFor="default-email" className="mb-2 text-sm font-medium text-gray-900 sr-only">Join wailist</label>
+                            <form onSubmit={formik.handleSubmit} className="w-full max-w-md mx-auto">
+                                            <label htmlFor="default-email" className="mb-2 text-sm font-medium text-gray-900 sr-only">Be the First to Try Nexus Free</label>
                                 <div className="relative">
                                     <div className="absolute inset-y-0 rtl:inset-x-0 start-0 flex items-center ps-3.5 pointer-events-none">
                                         <svg className="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
@@ -238,10 +247,13 @@ export default function Home() {
                                             <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
                                         </svg>
                                     </div>
-                                    <input type="email" id="default-email" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-white" placeholder="Enter your email here..." required ref={emailRef} />
+                                    <input type="email" name="email" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-white" placeholder="Enter your email here..." required value={formik.values.email} onChange={formik.handleChange} />
                                     <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-[#744629] focus:ring-4 focus:outline-none font-medium rounded-full text-sm px-4 py-2">Get Early Access</button>
+
                                 </div>
-                            </form>
+                                                {/* <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Enter email" required value={formik.values.email} onChange={formik.handleChange} /> */}
+                                            
+                                    </form>
                         </div>
                     </div>
                 </div>
